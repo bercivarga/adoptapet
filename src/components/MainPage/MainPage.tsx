@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Pet, PetAPIResponse } from "../../interfaces/ApiRequestInterfaces";
+import Results from "./Results";
+import DetailPicker from "./DetailPicker";
 
 export default function MainPage(): JSX.Element {
   const [location, setLocation] = useState<string>("");
@@ -22,9 +24,15 @@ export default function MainPage(): JSX.Element {
   return (
     <div>
       <h1>MainPage</h1>
-      {pets.map((p) => (
-        <h1 key={p.id}>{p.name}</h1>
-      ))}
+      <DetailPicker
+        location={location}
+        animal={animal}
+        breed={breed}
+        setLocation={setLocation}
+        setAnimal={setAnimal}
+        setBreed={setBreed}
+      ></DetailPicker>
+      <Results pets={pets}></Results>
     </div>
   );
 }
