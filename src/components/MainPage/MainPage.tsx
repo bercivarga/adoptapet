@@ -13,7 +13,7 @@ export default function MainPage(): JSX.Element {
 
   useEffect(function () {
     void getAllPets();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   async function getAllPets() {
     const response = await fetch(

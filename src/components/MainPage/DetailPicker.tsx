@@ -22,7 +22,7 @@ export default function DetailPicker({
   setSpecies,
   setBreed,
   getAllPets,
-}: PropsInterface) {
+}: PropsInterface): JSX.Element {
   function handleSubmit(event: FormEvent) {
     event.preventDefault();
     void getAllPets();

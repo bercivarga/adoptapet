@@ -19,3 +19,18 @@ export interface BreedListAPIResponse {
   animal: string;
   breeds: string[];
 }
+
+export type PetDetails = {
+  id: number;
+  name: string;
+  animal: string;
+  city: string;
+  state: string;
+  description: string;
+  breed: string;
+  images: string[];
+};
+
+export interface DetailAPIResponse {
+  pets: PetDetails[];
+}
