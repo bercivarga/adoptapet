@@ -1,45 +1,73 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, FormEvent, SetStateAction } from "react";
 
 interface PropsInterface {
   location: string;
-  animal: string;
+  species: string;
   breed: string;
+  breedList: string[];
   setLocation: Dispatch<SetStateAction<string>>;
-  setAnimal: Dispatch<SetStateAction<string>>;
+  setSpecies: Dispatch<SetStateAction<string>>;
   setBreed: Dispatch<SetStateAction<string>>;
+  getAllPets: () => void;
 }
 
-const ANIMALS: string[] = ["bird", "cat", "dog", "rabbit", "reptile"];
+const SPECIES: string[] = ["bird", "cat", "dog", "rabbit", "reptile"];
 
 export default function DetailPicker({
   location,
-  animal,
+  species,
   breed,
+  breedList,
   setLocation,
-  setAnimal,
+  setSpecies,
   setBreed,
+  getAllPets,
 }: PropsInterface) {
+  function handleSubmit(event: FormEvent) {
+    event.preventDefault();
+    void getAllPets();
+  }
+
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="location">
           Place
-          <input value={location}></input>
+          <input
+            value={location}
+            onChange={(event) => setLocation(event.target.value)}
+          ></input>
         </label>
-        <label htmlFor="animal">
+        <label htmlFor="species">
           Species
           <select
-            value={animal}
+            value={species}
             onChange={(event) => {
-              setAnimal(event.target.value);
+              setSpecies(event.target.value);
             }}
             onBlur={(event) => {
-              setAnimal(event.target.value);
+              setSpecies(event.target.value);
             }}
           >
             <option />
-            {ANIMALS.map(function (animal) {
+            {SPECIES.map(function (animal) {
               return <option key={animal}>{animal}</option>;
+            })}
+          </select>
+        </label>
+        <label htmlFor="breed">
+          Breed
+          <select
+            value={breed}
+            onChange={(event) => {
+              setBreed(event.target.value);
+            }}
+            onBlur={(event) => {
+              setBreed(event.target.value);
+            }}
+          >
+            {breedList.map(function (breed) {
+              return <option key={breed}>{breed}</option>;
             })}
           </select>
         </label>

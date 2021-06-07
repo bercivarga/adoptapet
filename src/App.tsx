@@ -1,23 +1,30 @@
-import React, { StrictMode } from "react";
+import React, { StrictMode, lazy, Suspense } from "react";
 import ReactDOM from "react-dom";
 import { AppProvider } from "./store";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./index.css";
-import MainPage from "./components/MainPage/MainPage";
-import DetailsPage from "./components/DetailsPage/DetailsPage";
+
+const MainPage = lazy(function () {
+  return import("./components/MainPage/MainPage");
+});
+const DetailsPage = lazy(function () {
+  return import("./components/DetailsPage/DetailsPage");
+});
 
 export default function App(): JSX.Element {
   return (
-    <Router>
-      <Switch>
-        <Route path="/details/:id">
-          <DetailsPage></DetailsPage>
-        </Route>
-        <Route path="/">
-          <MainPage></MainPage>
-        </Route>
-      </Switch>
-    </Router>
+    <Suspense fallback={<h1>Loading...</h1>}>
+      <Router>
+        <Switch>
+          <Route path="/details/:id">
+            <DetailsPage></DetailsPage>
+          </Route>
+          <Route path="/">
+            <MainPage></MainPage>
+          </Route>
+        </Switch>
+      </Router>
+    </Suspense>
   );
 }
 

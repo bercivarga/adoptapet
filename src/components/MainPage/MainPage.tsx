@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 import { Pet, PetAPIResponse } from "../../interfaces/ApiRequestInterfaces";
 import Results from "./Results";
 import DetailPicker from "./DetailPicker";
+import useBreedList from "./useBreedList";
 
 export default function MainPage(): JSX.Element {
   const [location, setLocation] = useState<string>("");
-  const [animal, setAnimal] = useState<string>("");
+  const [species, setSpecies] = useState<string>("");
   const [breed, setBreed] = useState<string>("");
   const [pets, setPets] = useState<Pet[]>([]);
+  const breedList = useBreedList(species);
 
   useEffect(function () {
     void getAllPets();
@@ -15,7 +17,7 @@ export default function MainPage(): JSX.Element {
 
   async function getAllPets() {
     const response = await fetch(
-      `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`
+      `http://pets-v2.dev-apis.com/pets?animal=${species}&location=${location}&breed=${breed}`
     );
     const data = (await response.json()) as PetAPIResponse;
     setPets(data.pets);
@@ -26,11 +28,13 @@ export default function MainPage(): JSX.Element {
       <h1>MainPage</h1>
       <DetailPicker
         location={location}
-        animal={animal}
+        species={species}
         breed={breed}
+        breedList={breedList}
         setLocation={setLocation}
-        setAnimal={setAnimal}
+        setSpecies={setSpecies}
         setBreed={setBreed}
+        getAllPets={getAllPets}
       ></DetailPicker>
       <Results pets={pets}></Results>
     </div>
