@@ -22,17 +22,33 @@ export default class MainPageErrorBoundary extends Component {
   render(): ReactNode {
     if (this.state.isError) {
       return (
-        <h1>
-          An error occurred. Please click{" "}
-          <button
-            type="button"
-            className="text-green-600 font-bold underline"
-            onClick={this.reloadPage}
-          >
-            here
-          </button>{" "}
-          to go back to the home page.
-        </h1>
+        <div>
+          <h1>
+            An error occurred. Please click{" "}
+            <button
+              type="button"
+              className="text-green-600 font-bold underline"
+              onClick={this.reloadPage}
+            >
+              here
+            </button>{" "}
+            to go back to the home page.
+          </h1>
+          <h2>
+            If this message persists, there is a high chance that there&apos;s
+            something wrong with the API. If that&apos;s the case, please let me
+            know by going to{" "}
+            <a
+              href="https://www.bercivarga.com/#contact"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-green-600 font-bold underline"
+            >
+              www.bercivarga.com/#contact
+            </a>
+            . Thank you!
+          </h2>
+        </div>
       );
     }
 
