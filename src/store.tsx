@@ -1,6 +1,6 @@
 import React, { ReactChild, useContext } from "react";
 
-export const AppContext = React.createContext<any>(null);
+export const AppContext = React.createContext<any>(null); // eslint-disable-line @typescript-eslint/no-explicit-any
 
 export function AppProvider({
   children,
@@ -14,6 +14,7 @@ export function AppProvider({
   );
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function useGlobalContext(): React.Context<any> {
-  return useContext<React.Context<any>>(AppContext);
+  return useContext<React.Context<any>>(AppContext); // eslint-disable-line @typescript-eslint/no-explicit-any
 }

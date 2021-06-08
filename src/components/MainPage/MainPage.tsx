@@ -30,8 +30,7 @@ function MainPage(): JSX.Element {
   }
 
   return (
-    <div>
-      <h1>MainPage</h1>
+    <div className="w-11/12 sm:w-10/12 lg:w-8/12 mx-auto">
       <DetailPicker
         location={location}
         species={species}
