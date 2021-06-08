@@ -22,7 +22,7 @@ export default class MainPageErrorBoundary extends Component {
   render(): ReactNode {
     if (this.state.isError) {
       return (
-        <div>
+        <div className="dark:text-gray-100 text-center">
           <h1>
             An error occurred. Please click{" "}
             <button

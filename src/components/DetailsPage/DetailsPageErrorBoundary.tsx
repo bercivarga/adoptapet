@@ -23,7 +23,7 @@ export default class DetailsPageErrorBoundary extends Component {
   render(): ReactNode {
     if (this.state.isError) {
       return (
-        <div>
+        <div className="dark:text-gray-100 text-center">
           <h1>
             We couldn&apos;t handle your request. Please click{" "}
             <Link to="/" className="text-green-600 font-bold underline">

@@ -40,12 +40,12 @@ export default function DetailPicker({
             <input
               className="block w-full md:w-44 h-10 border-gray-200 border-2 px-4"
               value={location}
-              placeholder="Los Angeles, CA"
+              placeholder="Minneapolis, MN"
               onChange={(event) => setLocation(event.target.value)}
             ></input>
           </label>
         </div>
-        <div className="sm:ml-2 w-full sm:w-auto">
+        <div className="md:ml-2 w-full sm:w-auto">
           <label htmlFor="species" className="block">
             Species
             <select
@@ -65,7 +65,7 @@ export default function DetailPicker({
             </select>
           </label>
         </div>
-        <div className="sm:ml-2 w-full sm:w-auto">
+        <div className="md:ml-2 w-full sm:w-auto">
           <label htmlFor="breed" className="block">
             Breed
             <select
@@ -87,7 +87,7 @@ export default function DetailPicker({
         </div>
         <button
           type="submit"
-          className="sm:ml-2 mt-4 h-10 bg-gray-700 hover:bg-green-600 px-4 py-2 rounded-sm text-white"
+          className="md:ml-2 mt-4 h-10 bg-gray-700 hover:bg-green-600 px-4 py-2 rounded-sm text-white"
         >
           Search pets
         </button>

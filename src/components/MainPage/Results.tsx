@@ -1,14 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Pet } from "../../interfaces/ApiRequestInterfaces";
+import Loader from "../misc/Loader";
 
 export default function Results({ pets }: { pets: Pet[] }): JSX.Element {
+  if (!pets.length)
+    return (
+      <div className="w-full p-8 flex flex-row justify-center items-center">
+        <Loader></Loader>
+      </div>
+    );
+
   return (
     <div className="mt-8 h-full">
-      <ul className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <ul className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5">
         {pets.map(function (pet) {
           return (
-            <Link to={`/details/${pet.id}`} key={pet.id}>
+            <Link to={`/pet/${pet.id}`} key={pet.id}>
               <li className="h-full">
                 <div className="relative overflow-hidden rounded-md h-full">
                   <img

@@ -14,10 +14,32 @@ const DetailsPage = lazy(function () {
 export function Logo(): JSX.Element {
   return (
     <Link to="/">
-      <h1 className="my-8 font-black text-4xl sm:text-6xl text-center">
+      <h1 className="my-8 font-black text-4xl sm:text-6xl text-center dark:text-gray-100">
         Adopta<span className="text-green-600">pet</span>
       </h1>
     </Link>
+  );
+}
+
+export function Footer(): JSX.Element {
+  return (
+    <div className="my-8 px-2 text-center">
+      <span className="dark:text-gray-100">
+        Made with{" "}
+        <span role="img" aria-label="heart">
+          ♥️
+        </span>{" "}
+        by{" "}
+        <a
+          href="https://www.bercivarga.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-green-600"
+        >
+          @bercivarga
+        </a>
+      </span>
+    </div>
   );
 }
 
@@ -27,13 +49,14 @@ export default function App(): JSX.Element {
       <Router>
         <Logo />
         <Switch>
-          <Route path="/details/:id">
-            <DetailsPage></DetailsPage>
+          <Route path="/pet/:id">
+            <DetailsPage />
           </Route>
           <Route path="/">
-            <MainPage></MainPage>
+            <MainPage />
           </Route>
         </Switch>
+        <Footer />
       </Router>
     </Suspense>
   );
@@ -42,7 +65,7 @@ export default function App(): JSX.Element {
 ReactDOM.render(
   <StrictMode>
     <AppProvider>
-      <App></App>
+      <App />
     </AppProvider>
   </StrictMode>,
   document.getElementById("root") as HTMLDivElement

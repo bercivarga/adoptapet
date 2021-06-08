@@ -4,6 +4,7 @@ import Results from "./Results";
 import DetailPicker from "./DetailPicker";
 import useBreedList from "./useBreedList";
 import MainPageErrorBoundary from "./MainPageErrorBoundary";
+import { GiJumpingDog } from "react-icons/gi";
 
 function MainPage(): JSX.Element {
   const [location, setLocation] = useState<string>("");
@@ -41,10 +42,17 @@ function MainPage(): JSX.Element {
         setBreed={setBreed}
         getAllPets={getAllPets}
       ></DetailPicker>
-      <Results pets={pets}></Results>
       {noResults ? (
-        <h2>There are no pets matching your criteria. Please try again.</h2>
-      ) : null}
+        <div className="text-center w-full py-8 px-2 flex flex-col justify-center items-center dark:text-gray-100">
+          <GiJumpingDog className="h-16 w-16"></GiJumpingDog>
+          <h2 className="mt-4">
+            There are no pets that match your criteria.<br></br>Please try
+            again.
+          </h2>
+        </div>
+      ) : (
+        <Results pets={pets}></Results>
+      )}
     </div>
   );
 }
