@@ -10,6 +10,7 @@ function MainPage(): JSX.Element {
   const [species, setSpecies] = useState<string>("");
   const [breed, setBreed] = useState<string>("");
   const [pets, setPets] = useState<Pet[]>([]);
+  const [noResults, setNoResults] = useState<boolean>(false);
   const breedList = useBreedList(species);
 
   useEffect(function () {
@@ -17,10 +18,14 @@ function MainPage(): JSX.Element {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   async function getAllPets() {
+    setNoResults(false);
     const response = await fetch(
       `http://pets-v2.dev-apis.com/pets?animal=${species}&location=${location}&breed=${breed}`
     );
     const data = (await response.json()) as PetAPIResponse;
+    if (data.pets.length === 0) {
+      setNoResults(true);
+    }
     setPets(data.pets);
   }
 
@@ -38,6 +43,9 @@ function MainPage(): JSX.Element {
         getAllPets={getAllPets}
       ></DetailPicker>
       <Results pets={pets}></Results>
+      {noResults ? (
+        <h2>There are no pets matching your criteria. Please try again.</h2>
+      ) : null}
     </div>
   );
 }
