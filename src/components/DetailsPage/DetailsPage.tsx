@@ -4,6 +4,7 @@ import {
   PetDetails,
   DetailAPIResponse,
 } from "../../interfaces/ApiRequestInterfaces";
+import ImageCarousel from "./ImageCarousel";
 
 interface ParamInterface {
   id: string;
@@ -30,6 +31,8 @@ export default function DetailsPage(): JSX.Element {
       details.animal[0].toUpperCase() + details.animal.slice(1);
   }
 
+  if (!details.images) return <h2>Loading details...</h2>;
+
   return (
     <div>
       <h1>DetailsPage</h1>
@@ -40,10 +43,14 @@ export default function DetailsPage(): JSX.Element {
         {details.city}, {details.state}
       </h4>
       <p>{details.description}</p>
-      {details.images &&
-        details.images.map(function (image, index) {
-          return <img src={image} alt="pet" key={index}></img>;
-        })}
+      <ImageCarousel images={details.images}></ImageCarousel>
+      <a
+        href="https://ikzoekbaas.dierenbescherming.nl/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <button type="button">Adopt {details.name}</button>
+      </a>
     </div>
   );
 }
