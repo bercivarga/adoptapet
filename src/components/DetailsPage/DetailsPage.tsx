@@ -5,12 +5,13 @@ import {
   DetailAPIResponse,
 } from "../../interfaces/ApiRequestInterfaces";
 import ImageCarousel from "./ImageCarousel";
+import DetailsPageErrorBoundary from "./DetailsPageErrorBoundary";
 
 interface ParamInterface {
   id: string;
 }
 
-export default function DetailsPage(): JSX.Element {
+function DetailsPage(): JSX.Element {
   const [details, setDetails] = useState({} as PetDetails);
   const { id } = useParams<ParamInterface>();
   let capitalizedSpecies;
@@ -52,5 +53,13 @@ export default function DetailsPage(): JSX.Element {
         <button type="button">Adopt {details.name}</button>
       </a>
     </div>
+  );
+}
+
+export default function DetailsPageWithErrorBoundary(): JSX.Element {
+  return (
+    <DetailsPageErrorBoundary>
+      <DetailsPage></DetailsPage>
+    </DetailsPageErrorBoundary>
   );
 }

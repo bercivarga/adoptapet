@@ -35,6 +35,7 @@ export default function DetailPicker({
           Place
           <input
             value={location}
+            placeholder="Los Angeles, CA"
             onChange={(event) => setLocation(event.target.value)}
           ></input>
         </label>

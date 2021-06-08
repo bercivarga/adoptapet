@@ -3,8 +3,9 @@ import { Pet, PetAPIResponse } from "../../interfaces/ApiRequestInterfaces";
 import Results from "./Results";
 import DetailPicker from "./DetailPicker";
 import useBreedList from "./useBreedList";
+import MainPageErrorBoundary from "./MainPageErrorBoundary";
 
-export default function MainPage(): JSX.Element {
+function MainPage(): JSX.Element {
   const [location, setLocation] = useState<string>("");
   const [species, setSpecies] = useState<string>("");
   const [breed, setBreed] = useState<string>("");
@@ -38,5 +39,13 @@ export default function MainPage(): JSX.Element {
       ></DetailPicker>
       <Results pets={pets}></Results>
     </div>
+  );
+}
+
+export default function MainPageWithErrorBoundary(): JSX.Element {
+  return (
+    <MainPageErrorBoundary>
+      <MainPage></MainPage>
+    </MainPageErrorBoundary>
   );
 }
