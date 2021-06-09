@@ -24,7 +24,9 @@ function DetailsPage(): JSX.Element {
       void getDetails();
     }
     async function getDetails() {
-      const response = await fetch(`http://pets-v2.dev-apis.com/pets?id=${id}`);
+      const response = await fetch(
+        `https://pets-v2.dev-apis.com/pets?id=${id}`
+      );
       const data = (await response.json()) as DetailAPIResponse;
       setDetails(data.pets[0]);
     }

@@ -21,7 +21,7 @@ function MainPage(): JSX.Element {
   async function getAllPets() {
     setNoResults(false);
     const response = await fetch(
-      `http://pets-v2.dev-apis.com/pets?animal=${species}&location=${location}&breed=${breed}`
+      `https://pets-v2.dev-apis.com/pets?animal=${species}&location=${location}&breed=${breed}`
     );
     const data = (await response.json()) as PetAPIResponse;
     if (data.pets.length === 0) {
