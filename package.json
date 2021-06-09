@@ -7,7 +7,7 @@
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --quiet",
     "dev": "parcel src/index.html",
-    "build": "parcel build src/index.html",
+    "build": "parcel build --experimental-scope-hoisting src/index.html",
     "test": "jest",
     "test:watch": "jest --watch",
     "typecheck": "tsc --noEmit"
@@ -38,6 +38,7 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "jest": "^27.0.4",
     "jest-fetch-mock": "^3.0.3",
+    "parcel-plugin-bundle-visualiser": "^1.2.0",
     "postcss": "^7.0.35",
     "prettier": "^2.3.1",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.1.4",

@@ -7,8 +7,8 @@ import {
 import ImageCarousel from "./ImageCarousel";
 import DetailsPageErrorBoundary from "./DetailsPageErrorBoundary";
 import Loader from "../misc/Loader";
-import { IoPawSharp } from "react-icons/io5";
-import { RiMapPin2Fill } from "react-icons/ri";
+// import { IoPawSharp } from "react-icons/io5/index.js";
+// import { RiMapPin2Fill } from "react-icons/ri/index.js";
 
 interface ParamInterface {
   id: string;
@@ -50,13 +50,13 @@ function DetailsPage(): JSX.Element {
       <div className="flex-1">
         <h2 className="font-extrabold text-3xl">{details.name}</h2>
         <div className="flex flex-row items-center text-xl mt-2">
-          <IoPawSharp />
+          {/* <IoPawSharp /> */}
           <h3 className="ml-2">
             {capitalizedSpecies} &mdash; {details.breed}
           </h3>
         </div>
         <div className="flex flex-row items-center text-lg mt-1">
-          <RiMapPin2Fill></RiMapPin2Fill>
+          {/* <RiMapPin2Fill></RiMapPin2Fill> */}
           <h4 className="ml-2">
             {details.city}, {details.state}
           </h4>
