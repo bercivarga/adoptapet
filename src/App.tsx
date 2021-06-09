@@ -43,6 +43,9 @@ export function Footer(): JSX.Element {
 }
 
 export default function App(): JSX.Element {
+  const html = document.querySelector("html") as HTMLElement;
+  html.classList.add("bg-white", "dark:bg-gray-800", "w-full", "h-full");
+
   return (
     <Suspense fallback={<h1>Loading...</h1>}>
       <Router>
