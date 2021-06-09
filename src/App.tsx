@@ -2,7 +2,6 @@ import React, { StrictMode, lazy, Suspense } from "react";
 import ReactDOM from "react-dom";
 import { AppProvider } from "./store";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-import "./index.css";
 
 const MainPage = lazy(function () {
   return import("./components/MainPage/MainPage");
