@@ -50,14 +50,14 @@ function DetailsPage(): JSX.Element {
       <div className="flex-1">
         <h2 className="font-extrabold text-3xl">{details.name}</h2>
         <div className="flex flex-row items-center text-xl mt-2">
-          {/* <IoPawSharp /> */}
-          <h3 className="ml-2">
+          {/* <IoPawSharp className="mr-2" /> */}
+          <h3>
             {capitalizedSpecies} &mdash; {details.breed}
           </h3>
         </div>
         <div className="flex flex-row items-center text-lg mt-1">
-          {/* <RiMapPin2Fill></RiMapPin2Fill> */}
-          <h4 className="ml-2">
+          {/* <RiMapPin2Fill className="mr-2" /> */}
+          <h4>
             {details.city}, {details.state}
           </h4>
         </div>
